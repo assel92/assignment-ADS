@@ -201,7 +201,7 @@ public class BankAccount{
                     System.out.println("Thank you for using the banking system!");
                     break;
             }
-        } while (choice != 10);
+        } while (choice!= 10);
         sc.close();
     }
 }
