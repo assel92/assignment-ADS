@@ -25,28 +25,30 @@ public class Sorter {
         }
         return arr;
     }
-    public static void QuickSort(int[] arr) {
-        QuickSort(arr, 0, arr.length-1);
+    public void QuickSort(int[] arr) {
+        QuickSort(arr, 0, arr.length - 1);
     }
-    private static void QuickSort(int[] arr, int low, int high){
-        if(low<high){
-            int pivot = arr[high];
-            int i = low - 1;
-            for (int j=low; j< high; j++){
-                if (arr[j]<=pivot){
-                    i++;
+    private void QuickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivot = arr[low + (high - low) / 2];
+            int i = low;
+            int j = high;
+
+            while (i <= j) {
+                while (arr[i] < pivot) i++;
+                while (arr[j] > pivot) j--;
+
+                if (i <= j) {
                     int temp = arr[i];
-                    arr[i]=arr[j];
+                    arr[i] = arr[j];
                     arr[j] = temp;
+                    i++;
+                    j--;
                 }
             }
-            int pivotIndex = i+1;
-            int temp = arr[pivotIndex];
-            arr[pivotIndex] = arr[high];
-            arr[high] = temp;
-            QuickSort(arr, low, pivotIndex - 1);
-            QuickSort(arr, pivotIndex + 1, high);
+
+            if (low < j) QuickSort(arr, low, j);
+            if (i < high) QuickSort(arr, i, high);
         }
     }
-
 }
