@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class Experiment {
     private Sorter sorter;
     private Searcher searcher;
@@ -78,13 +77,7 @@ public void runAllExperiments(){
             System.out.println("  Time: " + searchTime + " nanoseconds");
 
             System.out.println("\n--- SORTED ARRAYS ---");
-
-            // Generate sorted array manually
-            int[] sortedArray = new int[size];
-            for (int i = 0; i < size; i++) {
-                sortedArray[i] = i;
-            }
-
+            int[] sortedArray =sorter.generateRandomArray(size);
             // Measure Basic Sort on sorted array
             System.out.println("Basic Sorting (Selection Sort) on Sorted Array:");
             long basicSortedTime = measureSortTime(sortedArray, "selection");
