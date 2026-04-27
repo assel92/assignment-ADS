@@ -13,11 +13,6 @@ public class Sorter {
             arr[i] = buff;
         }
     }
-    public void printArray(int[] arr){
-        for(int i=0; i<arr.length; i++){
-            System.out.print(arr[i]+" ");
-        }
-    }
     public int[] generateRandomArray(int size){
         int[] arr = new int[size];
         for(int i=0; i<size; i++){
