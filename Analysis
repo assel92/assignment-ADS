@@ -6,10 +6,10 @@ Analysis Questions Answers
 
 Quick Sort performed significantly faster, especially on larger arrays.
 Results:
-- Size 10: Quick Sort ~1.06x faster (6900 vs 6500 ns) - almost equal
-- Size 100: Quick Sort ~5.87x faster on random data
-- Size 1000: Quick Sort ~13.34x faster on random data
-- Size 1000 sorted: Quick Sort ~24.43x faster
+- Size 10: Quick Sort ~0.6x faster (10,400 vs 6,300 ns) - slower on little datasets
+- Size 100: Quick Sort ~5.98x faster on random data
+- Size 1000: Quick Sort ~14.55x faster on random data
+- Size 1000 sorted: Quick Sort ~26.22x faster
 
 Why:
 - Selection Sort (O(n²)): Always scans the entire unsorted portion to find minimum - many comparisons
