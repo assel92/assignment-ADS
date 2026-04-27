@@ -19,10 +19,10 @@ Why:
 
 Selection Sort performance degrades much faster than Quick Sort as size increases.
 
-| Size |Selection Sort (Random)|Quick Sort(Random)| 
-| 10   | 6,500 ns              | 6,900 ns         | 
-| 100  | 65,200 ns (10x )      | 11,100 ns (1.6x )| 
-| 1000 | 1,824,600 ns (280x )  | 136,800 ns(19.8x)| 
+| Size |Selection Sort (Random)|Quick Sort(Random) | 
+| 10   | 6,300 ns              | 10,400 ns         | 
+| 100  | 98,200 ns (10x )      | 16,400 ns (5.9x ) | 
+| 1000 | 2,659,800 ns (280x )  | 182,800 ns(14.5x) | 
 
 Analysis:
 - Selection Sort grows quadratically (n²) - very bad for large data
@@ -34,12 +34,12 @@ The effect is dramatically different for each algorithm.
 
 Selection Sort:
 - Sorted data actually performs better than random data
-- Size 1000: Sorted (1,060,400 ns) vs Random (1,824,600 ns)
+- Size 1000: Sorted (1,006,900 ns) vs Random (2,659,800 ns)
 - Reason: Still does all comparisons, but fewer swaps (swaps only happen when finding minimum)
 
 Quick Sort:
 - Sorted data performs much better than random data
-- Size 1000: Sorted (43,400 ns) vs Random (136,800 ns)
+- Size 1000: Sorted (38,400 ns) vs Random (182,800 ns)
 - Reason: middle pivot creates perfectly balanced partitions - optimal O(n log n) performance
 
 4. Do the results match the expected Big-O complexity?
@@ -48,24 +48,24 @@ Yes, the results qrowth patterns match theoretical complexity.
 Expected vs Actual Performance Ratios:
 
 Selection Sort O(n²):
-- n=10 → 6,500 ns 
+- n=10 → 6,300 ns 
 - n=100 → predicted: 6,500 × (100²/10²) = 6,500 × 100 = 650,000 ns
-- Actual: 65,200 ns - 10x less due to overhead, but matches growth pattern
-- n=1000 → actual: 1,824,600 ns 
+- Actual: 98,200 ns - 10x less due to overhead, but matches growth pattern
+- n=1000 → actual: 2,659,800 ns 
 - Expected growth: 10x size → 100x slower
-- Actual 1000 vs 10: 1,824,600 / 6,500 - 280x slower 
+- Actual 1000 vs 10: 2,659,800 / 6,300 - 422x slower 
 
 Quick Sort O(n log n):
-- n=10 → 6,900 ns
-- n=100 → actual: 11,100 ns (only 1.6x increase for 10x size)
-- n=1000 → actual: 136,800 ns (19.8x increase for 100x size)
+- n=10 → 10,400 ns
+- n=100 → actual: 16,400 ns (only 1.6x increase for 10x size)
+- n=1000 → actual: 182,800 ns (17.6x increase for 100x size)
 
 5. Which searching algorithm is more efficient? Why?
 Linear Search Performance:
 | Size | Search Time |
-| 10   | 2,000 ns    |
-| 100  | 900 ns      |
-| 1000 | 5,500 ns    |
+| 10   | 900 ns      |
+| 100  | 1,600 ns    |
+| 1000 | 7,300 ns    |
 
 Binary Search would be much more efficient:
 
@@ -151,46 +151,46 @@ O(n)
 
  Random Arrays:
 
-| Size | Selection Sort | Quick Sort| 
-| 10   | 6,500 ns      | 6,900 ns   | 
-| 100  | 65,200 ns     | 11,100 ns  | 
-| 1000 | 1,824,600 ns  | 136,800 ns | 
+| Size | Selection Sort| Quick Sort | 
+| 10   | 6,300 ns      | 10,400 ns  | 
+| 100  | 98,200 ns     | 16,400 ns  | 
+| 1000 | 2,659,800 ns  | 182,800 ns | 
 
  Sorted Arrays:
 
-| Size | Selection Sort | Quick Sort|
-| 10   | 1,900 ns      | 2,100 ns   | 
-| 100  | 70,700 ns     | 11,400 ns  | 
-| 1000 | 1,060,400 ns  | 43,400 ns  | 
+| Size | Selection Sort| Quick Sort |
+| 10   | 2,700 ns      | 2,800 ns   | 
+| 100  | 91,600 ns     | 14,900 ns  | 
+| 1000 | 1,006,900 ns  | 38,400 ns  | 
 
  Linear Search Results:
 
-| Size | Best Case (ns)|
-| 10   | 400 ns        | 
-| 100  | 800 ns        | 
-| 1000 | 5,500 ns      | 
+| Size | Time (ns)     |
+| 10   | 900 ns        | 
+| 100  | 1600 ns       | 
+| 1000 | 7,300 ns      | 
 
   Performance Comparisons:
 Quick Sort vs Selection Sort:
 
-Array Size 10:     Selection Sort 6500ns   Quick Sort 6900ns (almost equal)
-Array Size 100:    Selection Sort 65200ns  Quick Sort 11100ns (5.87x faster)
-Array Size 1000:   Selection Sort 1824600ns  Quick Sort 136800ns (13.34x faster)
+Array Size 10:     Selection Sort 6,300ns      Quick Sort 10,400ns (0,6x faster)
+Array Size 100:    Selection Sort 98,200ns     Quick Sort 16,400ns (5.98x faster)
+Array Size 1000:   Selection Sort 2,659,800ns  Quick Sort 182,800ns (14.55x faster)
 
 Sorted vs Random Data:
 
 Quick Sort performance:                              Selection Sort performance:
-- Random (1000): 136,800 ns                          - Random (1000): 1,824,600 ns
-- Sorted (1000): 43,400 ns                           - Sorted (1000): 1,060,400 ns
-- Sorted arrays are 3.15x faster                     - Sorted arrays are 1.72x faster
+- Random (1000): 182,800 ns                          - Random (1000): 2,659,800 ns
+- Sorted (1000): 38,400  ns                          - Sorted (1000): 1,006,900 ns
+- Sorted arrays are 4.76x faster                     - Sorted arrays are 2,64x faster
 
 D. Screenshots
 Different Test Runs
 
-| Run | Selection Sort (1000) | Quick Sort (1000) |
-| Run 1 | 1,824,600 ns | 136,800 ns | 
-| Run 2 | 1,792,300 ns | 142,100 ns | 
-| Run 3 | 1,856,200 ns | 131,500 ns | 
+| Run   | Selection Sort (1000) | Quick Sort (1000) |
+| Run 1 | 1,824,600 ns          | 136,800 ns        | 
+| Run 2 | 1,792,300 ns          | 142,100 ns        | 
+| Run 3 | 2,659,800 ns          | 182,800 ns        | 
 
 Screenshots located in screenshots directory:
 
@@ -220,10 +220,8 @@ After debugging, I discovered the pivot element wasn't being properly isolated d
 Switching to middle-pivot with proper swap logic fixed the issue.
 
 Challenge 2: Accurate Performance Measurement
-Single-run measurements were highly inconsistent (varying by 30-50%). I learned that:
-- Need multiple iterations and average results
-- JVM warmup is essential before timing
-- Always copy arrays to avoid modifying originals
+Single-run measurements were highly inconsistent. 
+I learned that it needed multiple iterations and average results
 
 Challenge 3: Nanosecond Precision
 Switching to System.nanoTime() provided microsecond-level precision needed for small array measurements.
