@@ -23,7 +23,6 @@ public class Experiment {
         for (int i = 0; i < 9; i++) {
             smallGraph.addEdge(i, i + 1);
         }
-
         long start = System.nanoTime();
         runTraversals(smallGraph);
         long end = System.nanoTime();
