@@ -18,6 +18,7 @@ public class Graph {
     public void addEdge(int from, int to) {
         if (adjList.containsKey(from) && adjList.containsKey(to)) {
             adjList.get(from).add(to);
+            adjList.get(to).add(from);
         }
     }
 

@@ -38,7 +38,6 @@ public class Experiment {
         }
 
         start = System.nanoTime();
-        mediumGraph.printGraph();
         System.out.print("BFS: ");
         mediumGraph.bfs(0);
         System.out.print("DFS: ");
